@@ -5,34 +5,37 @@ using UnityEngine;
 
 public abstract class OpponentBase : MonoBehaviour
 {
-    public string shownName { get; set; } = "Anonymous";
+    private string MainName = "none";
+    public string MyName
+    {
+        get { return MainName; }
+        set { MainName = value; }
+    }
+   
+    protected float RockChance = 33.3f;
+    protected float PaperChance = 33.3f;
+    protected float ScissorChance = 33.3f;
 
-    private string myQuip = "Hello, guess and win!";
-
-    private float RockChance = 33.3f;
-    private float PaperChance = 33.3f;
-    private float ScissorChance = 33.3f;
-
-    public void ChangeChance(float rock, float paper, float scissor)
+    public virtual void ChangeChance(float rock, float paper, float scissor)
     {
         RockChance = rock;
         PaperChance = paper;
         ScissorChance = scissor;
     }
 
-    public string GetHandResult()
+    public virtual string GetHandResult()
     {
         var roll = Random.Range(0f,99.9f);
         if(roll < (RockChance))
         {
-            return "rock";
+            return "Rock";
         }else
             if (roll < (RockChance + PaperChance))
             {
-                return "paper";
+                return "Paper";
             }else
                 {
-                    return "scissor";
+                    return "Scissor";
                 }
     }
 
