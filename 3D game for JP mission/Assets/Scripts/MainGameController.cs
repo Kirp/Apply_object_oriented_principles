@@ -37,9 +37,8 @@ public class MainGameController : MonoBehaviour
         HandSelection.SetActive(false);
         var enemyHand = CurrentOpponent.GetHandResult();
     
+        //ABSTRACTION
         var result = GetWinner(hand.name, enemyHand);
-
-
         var resultString = "You play, " + hand.name + ", against the opponents ," + enemyHand + ", so you get a :" + result;
 
         feedbackController.LoadResponseText(resultString);
